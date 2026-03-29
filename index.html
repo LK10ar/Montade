@@ -219,15 +219,20 @@
             flex-direction: column;
             gap: 15px;
         }
-        .dark-form input {
+       .dark-form input {
             width: 100%;
+            height: 45px; /* On force une hauteur identique pour tous */
             padding: 12px 15px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 4px;
             color: var(--white);
             font-family: inherit;
+            font-size: 16px; /* Évite le zoom automatique sur iPhone */
             transition: var(--transition);
+            display: block; /* Force le comportement en bloc */
+            -webkit-appearance: none; /* Enlève le style Safari par défaut */
+            appearance: none;
         }
         .dark-form input:focus {
             outline: none;
@@ -306,6 +311,18 @@
         .creator-credit a:hover .creator-icon {
             color: var(--accent) !important;
         }
+
+        /* Couleur de base blanche pour les liens de contact */
+.contact-info-dark a {
+    color: var(--white) !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Couleur DORÉE au survol (souris) */
+.contact-info-dark a:hover {
+    color: var(--accent) !important;
+}
 
         /* ================= RESPONSIVE ================= */
         @media (max-width: 992px) {
@@ -562,8 +579,7 @@
                     <p class="business-name">Le Montadé</p>
                     <p class="address-line address-accent">1 Av. de Loustallaut</p>
                     <p class="address-line">33880 Saint-Caprais-de-Bordeaux</p>
-                    <p class="address-line" style="margin-top: 15px;"><i class="fas fa-phone-alt" style="color: var(--accent); margin-right: 10px;"></i>05.56.84.31.59</p>
-                    <p class="address-line"><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px;"></i>contact@lemontade.fr</p>
+<p class="address-line" style="margin-top: 15px;"><i class="fas fa-phone-alt" style="color: var(--accent); margin-right: 10px;"></i><a href="tel:+33556843159" style="color: var(--white); text-decoration: none;">05.56.84.31.59</a></p><p class="address-line"><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px;"></i><a href="mailto:contact@lemontade.fr" style="color: var(--white); text-decoration: none;">contact@lemontade.fr</a></p>
                 </div>
                 
                 <div style="width: 100%;">
