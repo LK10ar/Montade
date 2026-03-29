@@ -215,30 +215,57 @@
 
         /* Formulaire stylisé pour le fond sombre */
 /* Formulaire stylisé pour le fond sombre */
+/* 1. Le conteneur du formulaire */
 .dark-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
+/* 2. Style de TOUS les inputs (Nom, Email, Date) */
 .dark-form input {
     width: 100%;
-    height: 45px; /* On force une hauteur identique pour tous */
-    padding: 12px 15px;
+    height: 45px !important; /* On force la hauteur */
+    min-height: 45px !important;
+    padding: 0 15px !important;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     color: var(--white);
     font-family: inherit;
     font-size: 16px;
-    transition: var(--transition);
-    
-    /* MODIFICATION : On passe en flex pour que le texte et l'icône soient alignés sur mobile */
-    display: flex; 
-    align-items: center;
-    
-    -webkit-appearance: none; /* Enlève le style Safari par défaut */
+    box-sizing: border-box;
+    -webkit-appearance: none; /* Tue le style par défaut iOS */
     appearance: none;
+}
+
+/* 3. Spécifique au champ DATE pour l'alignement */
+.dark-form input[type="datetime-local"] {
+    display: flex !important;
+    align-items: center !important;
+    position: relative;
+}
+
+/* 4. Force l'alignement du texte à l'intérieur du champ date sur iOS */
+.dark-form input[type="datetime-local"]::-webkit-datetime-edit {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+}
+
+/* 5. L'icône calendrier : Blanche, centrée à droite et fixe */
+.dark-form input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Blanc */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Centrage vertical parfait */
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 
 .dark-form input:focus {
@@ -246,8 +273,6 @@
     border-color: var(--accent);
     background: rgba(255, 255, 255, 0.1);
 }
-
-.dark-form input::placeholder { color: #a0aabf; }
 
 /* Personnalisation de l'icône calendrier */
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
