@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Montadé</title>
-    <link rel="icon" type="image/png" href="asset/logo.jpg"> 
+    <link rel="icon" type="image/png" href="asset\logo.jpg"> 
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -236,7 +236,7 @@
         }
         .dark-form input::placeholder { color: #a0aabf; }
         
-        /* Personnalisation de l'icône calendrier (pour les navigateurs récents) */
+        /* Personnalisation de l'icône calendrier */
         input[type="datetime-local"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
             opacity: 0.6;
@@ -254,11 +254,58 @@
         }
 
         /* ================= FOOTER ================= */
-        footer { background: #111827; color: #9ca3af; padding: 60px 20px 20px; text-align: center; }
+        footer { 
+            background: #111827; 
+            color: rgba(255, 255, 255, 0.85); /* Plus lumineux et propre que le vieux gris */
+            padding: 60px 20px 20px; 
+            text-align: center; 
+        }
         .social-links { margin: 20px 0; }
-        .social-links a { color: var(--white); font-size: 1.5rem; margin: 0 10px; transition: var(--transition); }
+        .social-links a { color: var(--white); font-size: 1.5rem; margin: 0 10px; transition: var(--transition); text-decoration: none;}
         .social-links a:hover { color: var(--accent); }
-        .footer-bottom { margin-top: 40px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        
+        .footer-bottom { 
+            margin-top: 40px; 
+            font-size: 0.9rem; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            padding-top: 20px; 
+        }
+
+        /* Style spécifique pour le crédit créateur (ZÉRO VIOLET) */
+        .creator-credit {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        /* On force les liens à être blancs, même après avoir été cliqués */
+        .creator-credit a, 
+        .creator-credit a:link, 
+        .creator-credit a:visited, 
+        .creator-credit a:active {
+            color: var(--white) !important;
+            text-decoration: none; /* Enlève le trait moche par défaut */
+        }
+        
+        .creator-link {
+            text-decoration: underline !important; /* Ajoute un trait propre sous UIPACT */
+            transition: color 0.3s;
+        }
+
+        .creator-icon {
+            margin-left: 5px;
+            font-size: 1.1rem;
+            vertical-align: middle;
+            transition: color 0.3s;
+        }
+
+        /* Effet doré quand on passe la souris */
+        .creator-credit a:hover {
+            color: var(--accent) !important;
+        }
+        .creator-credit a:hover .creator-icon {
+            color: var(--accent) !important;
+        }
 
         /* ================= RESPONSIVE ================= */
         @media (max-width: 992px) {
@@ -266,9 +313,7 @@
             .hero-content h1 { font-size: 3.5rem; }
         }
         @media (max-width: 768px) {
-            .logo img { 
-        height: 100px; /* Réduit la taille de moitié sur mobile */
-    }
+            .logo img { height: 100px; }
             .nav-links {
                 position: absolute; top: 100%; left: 0; width: 100%; background: var(--white);
                 flex-direction: column; padding: 20px 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1);
@@ -308,13 +353,8 @@
                 gap: 30px;
             }
             .contact-info-dark { align-items: center; }
-            .address-col {
-                text-align: center;
-            }
-            .map-frame {
-                height: 300px;
-                min-height: 300px;
-            }
+            .address-col { text-align: center; }
+            .map-frame { height: 300px; min-height: 300px; }
         }
     </style>
 </head>
@@ -522,7 +562,7 @@
                     <p class="business-name">Le Montadé</p>
                     <p class="address-line address-accent">1 Av. de Loustallaut</p>
                     <p class="address-line">33880 Saint-Caprais-de-Bordeaux</p>
-                    <p class="address-line" style="margin-top: 15px;"><i class="fas fa-phone-alt" style="color: var(--accent); margin-right: 10px;"></i>0556843159</p>
+                    <p class="address-line" style="margin-top: 15px;"><i class="fas fa-phone-alt" style="color: var(--accent); margin-right: 10px;"></i>05.56.84.31.59</p>
                     <p class="address-line"><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px;"></i>contact@lemontade.fr</p>
                 </div>
                 
@@ -530,18 +570,18 @@
                     <h3 style="color: var(--accent); margin-bottom: 20px; font-family: 'Playfair Display', serif; font-size: 1.5rem;">Demande de Réservation</h3>
                     
                     <form class="dark-form" action="https://formsubmit.co/leobarrot@gmail.com" method="POST">
-                        
                         <input type="hidden" name="_subject" value="Nouvelle Demande de Réservation !">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_captcha" value="false">
                         
                         <input type="text" name="Nom" placeholder="Votre Nom" required>
-                        <input type="email" name="Email" placeholder="Votre Email (pour confirmer)" required> <input type="number" name="Personnes" placeholder="Nombre de personnes" required>
+                        <input type="email" name="Email" placeholder="Votre Email (pour confirmer)" required> 
+                        <input type="number" name="Personnes" placeholder="Nombre de personnes" required>
                         <input type="datetime-local" name="Date_et_Heure" required style="color: #a0aabf;"> 
                         
                         <button type="submit" class="btn-reserve" style="width: 100%; margin-top: 10px;">Envoyer la demande</button>
                     </form>
-                    </div>
+                </div>
             </div>
             
             <div class="map-col">
@@ -561,12 +601,17 @@
             <p>Bar à vin • Brasserie • Working Café</p>
         </div>
         <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/people/Le-Montad%C3%A9/61585855325055/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/lemontade_lelieu/" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
         <p>Retrouvez tous nos temps forts et la carte sur nos réseaux sociaux.</p>
+        
         <div class="footer-bottom">
-            © 2026 Le Montadé - 1 Av. de Loustallaut, 33880 Saint-Caprais-de-Bordeaux. Tous droits réservés.
+            <p>© 2026 Le Montadé - 1 Av. de Loustallaut, 33880 Saint-Caprais-de-Bordeaux. Tous droits réservés.</p>
+            <p class="creator-credit">
+                by <a href="https://www.instagram.com/uipact/" class="creator-link" target="_blank" rel="noopener noreferrer">UIPACT</a> 
+                <a href="https://www.instagram.com/uipact/" target="_blank" rel="noopener noreferrer" title="Instagram UIPACT"><i class="fab fa-instagram creator-icon"></i></a>
+            </p>
         </div>
     </footer>
 
